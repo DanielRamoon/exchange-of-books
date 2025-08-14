@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    /* Diretórios */
+    "rootDir": "./src", // Código fonte
+    "outDir": "./dist", // Código compilado
+
+    /* Compatibilidade */
+    "target": "ES2020",
+    "module": "CommonJS",
+
+    /* Integração com Node */
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+
+    /* Segurança de código */
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  }
+}
