@@ -23,7 +23,7 @@ router.post("/:id/cancel", authenticateToken, bookController.cancelReservation);
 router.put("/:id", authenticateToken, bookController.updateBook);
 
 // falta criar as roras de:
-//  Atualizar um livro
+
 //  Deletar um livro (autenticado)
 // Listar livros reservados por um usuário
 // Pesquisar livros
