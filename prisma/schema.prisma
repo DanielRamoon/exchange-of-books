@@ -19,9 +19,11 @@ model Book {
   id      String @id @default(auto()) @map("_id") @db.ObjectId
   title   String
   author  String
-  status  String
+  status     String   @default("available")
+  description String?  
   ownerId String @db.ObjectId
   owner   User   @relation("UserBooks", fields: [ownerId], references: [id])
+  reservedBy String?
 }
 
 model Trade {
