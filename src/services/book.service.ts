@@ -73,3 +73,20 @@ export async function cancelReservation(bookId: string) {
     },
   });
 }
+
+export async function updateBook(
+  bookId: string,
+  data: Partial<BookInput>,
+  ownerId: string
+) {
+  const book = await prisma.book.findUnique({ where: { id: bookId } });
+  if (!book) {
+    throw new Error("Livro não encontrado");
+  }
+
+  // Atualizar os dados do livro
+  return prisma.book.update({
+    where: { id: bookId },
+    data,
+  });
+}

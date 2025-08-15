@@ -92,3 +92,27 @@ export async function cancelReservation(req: Request, res: Response) {
     res.status(500).json({ message: "Internal Server Error" });
   }
 }
+
+export async function updateBook(req: Request, res: Response) {
+  try {
+    const bookId = req.params.id;
+    const { title, author, description } = req.body;
+    const ownerId = (req as any).user.userId;
+
+    const updatedBook = await bookService.updateBook(
+      bookId,
+      { title, author, description },
+      ownerId
+    );
+
+    return res.status(200).json(updatedBook);
+  } catch (error: any) {
+    if (error.message === "Livro não encontrado") {
+      return res.status(404).json({ message: error.message });
+    }
+    if (error.message === "Apenas o dono do livro pode atualizá-lo") {
+      return res.status(403).json({ message: error.message });
+    }
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+}

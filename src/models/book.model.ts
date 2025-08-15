@@ -7,12 +7,11 @@ export interface IBookInput {
 }
 
 export const BookModel = {
-  // Criar livro
   async create(data: IBookInput & { ownerId: string }) {
     return prisma.book.create({
       data: {
         ...data,
-        status: "available", // se quiser garantir o padrão
+        status: "available",
       },
     });
   },
